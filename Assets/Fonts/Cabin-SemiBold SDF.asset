@@ -2543,7 +2543,7 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: Cabin-SemiBold SDF Material
   m_Shader: {fileID: 4800000, guid: 68e6db2ebdc24f95958faec2be5558d6, type: 3}
-  m_ShaderKeywords: 
+  m_ShaderKeywords: UNDERLAY_ON
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -2607,11 +2607,11 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - _Ambient: 0.5
-    - _Bevel: 0.573
+    - _Bevel: 0.426
     - _BevelClamp: 0
-    - _BevelOffset: -0.493
+    - _BevelOffset: 0.137
     - _BevelRoundness: 0
-    - _BevelWidth: -0.408
+    - _BevelWidth: -0.127
     - _BumpFace: 0
     - _BumpOutline: 0
     - _BumpScale: 1
@@ -2626,10 +2626,10 @@ Material:
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
-    - _GlowInner: 0.05
+    - _GlowInner: 0
     - _GlowOffset: 0
-    - _GlowOuter: 0.05
-    - _GlowPower: 0.75
+    - _GlowOuter: 0.082
+    - _GlowPower: 0.151
     - _GradientScale: 6
     - _LightAngle: 0.73
     - _MaskSoftnessX: 0
@@ -2640,14 +2640,14 @@ Material:
     - _OutlineSoftness: 0
     - _OutlineUVSpeedX: 0
     - _OutlineUVSpeedY: 0
-    - _OutlineWidth: 0.1
+    - _OutlineWidth: 0
     - _Padding: 0
     - _Parallax: 0.02
-    - _PerspectiveFilter: 0.875
+    - _PerspectiveFilter: 1
     - _Reflectivity: 10
     - _ScaleRatioA: 0.8333333
     - _ScaleRatioB: 0.6770833
-    - _ScaleRatioC: 0.6770833
+    - _ScaleRatioC: 0.30776516
     - _ScaleX: 1
     - _ScaleY: 1
     - _ShaderFlags: 1
@@ -2664,10 +2664,10 @@ Material:
     - _TextureHeight: 512
     - _TextureWidth: 512
     - _UVSec: 0
-    - _UnderlayDilate: 0
-    - _UnderlayOffsetX: 0
-    - _UnderlayOffsetY: 0
-    - _UnderlaySoftness: 0
+    - _UnderlayDilate: 0.2
+    - _UnderlayOffsetX: 0.33
+    - _UnderlayOffsetY: -1
+    - _UnderlaySoftness: 1
     - _UseUIAlphaClip: 0
     - _VertexOffsetX: 0
     - _VertexOffsetY: 0

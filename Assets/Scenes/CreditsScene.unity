@@ -1343,8 +1343,9 @@ MonoBehaviour:
 
     ISTUDOR GEORGIANA-CRISTINA'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: a199dfdd5f26fe3818622f218cabb112, type: 2}
+  m_sharedMaterial: {fileID: 21009835829906812, guid: a199dfdd5f26fe3818622f218cabb112,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1377,7 +1378,7 @@ MonoBehaviour:
   m_fontSizeMax: 45
   m_fontStyle: 2
   m_textAlignment: 514
-  m_characterSpacing: 0
+  m_characterSpacing: 5
   m_wordSpacing: 0
   m_lineSpacing: 50
   m_lineSpacingMax: 0

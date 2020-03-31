@@ -18,4 +18,8 @@ public class QuitGameDialog : MonoBehaviour
             menu.SetActive(true);
         }
     }
+    
+    public void ShowMenu() {
+    	menu.SetActive(true);
+    }
 }

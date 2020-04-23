@@ -16,35 +16,20 @@ public class Maze : MonoBehaviour
 
 	public float generationStepDelay;
 
-
-
-
-	// Start is called before the first frame update
-	void Start()
-	{
-
-	}
-
-	// Update is called once per frame
-	void Update()
-	{
-
-	}
-
 	public MazeCell GetCell(IntVector2 coordinates)
 	{
 		return cells[coordinates.x, coordinates.z];
 	}
 
-	public IEnumerator Generate()
+	public void Generate()
 	{
-		WaitForSeconds delay = new WaitForSeconds(generationStepDelay);
+		// WaitForSeconds delay = new WaitForSeconds(generationStepDelay);
 		cells = new MazeCell[size.x, size.z];
 		List<MazeCell> activeCells = new List<MazeCell>();
 		DoFirstGenerationStep(activeCells);
 		while (activeCells.Count > 0)
 		{
-			yield return delay;
+			// yield return delay;
 			DoNextGenerationStep(activeCells);
 		}
 	}
@@ -77,19 +62,15 @@ public class Maze : MonoBehaviour
 			else
 			{
 				CreateWall(currentCell, neighbor, direction);
-				
+
 			}
 		}
 		else
 		{
 			CreateWall(currentCell, null, direction);
-			
+
 		}
 	}
-
-
-
-
 
 	private void CreatePassage(MazeCell cell, MazeCell otherCell, MazeDirection direction)
 	{
@@ -110,10 +91,6 @@ public class Maze : MonoBehaviour
 		}
 	}
 
-
-
-
-
 	public IntVector2 RandomCoordinates
 	{
 		get
@@ -126,8 +103,6 @@ public class Maze : MonoBehaviour
 	{
 		return coordinate.x >= 0 && coordinate.x < size.x && coordinate.z >= 0 && coordinate.z < size.z;
 	}
-
-
 
 	private MazeCell CreateCell(IntVector2 coordinates)
 	{
@@ -142,5 +117,8 @@ public class Maze : MonoBehaviour
 	}
 
 
-	
+	public MazeCell GetRandomCell()
+	{
+		return GetCell(RandomCoordinates);
+	}
 }

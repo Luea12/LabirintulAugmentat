@@ -50,3 +50,7 @@ MonoBehaviour:
   passagePrefab: {fileID: 1673751292, guid: 1b25c943f59d22646bf1f3cc9ac83fdf, type: 3}
   wallPrefab: {fileID: 1568782460, guid: 9534048da9af4f540b30da9feecd2fe4, type: 3}
   generationStepDelay: -1e+17
+  coinPrefab: {fileID: 6835646633145432154, guid: b22682cff4295064ab94e8978ac8019a,
+    type: 3}
+  teleportPrefab: {fileID: 8152303521989778555, guid: 22322d68dd7ea8e45bfb58299bb6d18b,
+    type: 3}

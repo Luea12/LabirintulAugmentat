@@ -15,22 +15,22 @@ using UnityEngine.EventSystems;
 public class RecordingButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
     #region PLEASE SET THESE VARIABLES IN THE INSPECTOR
-        [Space(10)]
-        [Tooltip("The service URL (optional). This defaults to \"https://stream.watsonplatform.net/speech-to-text/api\"")]
-        [SerializeField]
-        private string _serviceUrl;
-        [Tooltip("Text field to display the results of streaming.")]
-        public Text ResultsField;
-        [Header("IAM Authentication")]
-        [Tooltip("The IAM apikey.")]
-        [SerializeField]
-        private string _iamApikey;
+    [Space(10)]
+    [Tooltip("The service URL (optional). This defaults to \"https://stream.watsonplatform.net/speech-to-text/api\"")]
+    [SerializeField]
+    private string _serviceUrl;
+    [Tooltip("Text field to display the results of streaming.")]
+    public Text ResultsField;
+    [Header("IAM Authentication")]
+    [Tooltip("The IAM apikey.")]
+    [SerializeField]
+    private string _iamApikey;
 
-        [Header("Parameters")]
-        // https://www.ibm.com/watson/developercloud/speech-to-text/api/v1/curl.html?curl#get-model
-        [Tooltip("The Model to use. This defaults to en-US_BroadbandModel")]
-        [SerializeField]
-        private string _recognizeModel;
+    [Header("Parameters")]
+    // https://www.ibm.com/watson/developercloud/speech-to-text/api/v1/curl.html?curl#get-model
+    [Tooltip("The Model to use. This defaults to en-US_BroadbandModel")]
+    [SerializeField]
+    private string _recognizeModel;
     #endregion
 
     private string[][] keywords = new string[][]
@@ -201,14 +201,14 @@ public class RecordingButton : MonoBehaviour, IPointerDownHandler, IPointerUpHan
             {
                 foreach (var alt in res.alternatives)
                 {
-                    if(res.final)
+                    if (res.final)
                     {
                         bool found = false;
-                        for(int i = 0; i < keywords.Length; i++)
+                        for (int i = 0; i < keywords.Length; i++)
                         {
-                            foreach(string dir in keywords[i])
+                            foreach (string dir in keywords[i])
                             {
-                                if(alt.transcript.Contains(dir))
+                                if (alt.transcript.Contains(dir))
                                 {
                                     GameManager.instance.playerInstance.Move((MazeDirection)i);
                                     Active = false;
@@ -219,7 +219,7 @@ public class RecordingButton : MonoBehaviour, IPointerDownHandler, IPointerUpHan
                                     break;
                                 }
                             }
-                            if(found) break;
+                            if (found) break;
 
                         }
                     }
@@ -241,7 +241,7 @@ public class RecordingButton : MonoBehaviour, IPointerDownHandler, IPointerUpHan
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        if(!ispressed)
+        if (!ispressed)
         {
             Active = true;
             StartRecording();

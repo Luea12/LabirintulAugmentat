@@ -61,6 +61,7 @@ public class GameManager : MonoBehaviour
         mazeInstance.Generate();
 		mazeInstance.gameObject.name = "Maze";
         InstantiatePlayer();
+		gameArea.localScale = new Vector3(0.01f, 0.01f, 0.01f);
     }
 
     public void RestartGame()

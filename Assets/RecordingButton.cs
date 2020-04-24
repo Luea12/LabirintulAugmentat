@@ -55,6 +55,13 @@ public class RecordingButton : MonoBehaviour, IPointerDownHandler, IPointerUpHan
     private bool ispressed = false;
     void Start()
     {
+#if PLATFORM_ANDROID
+        if (!Permission.HasUserAuthorizedPermission(Permission.Microphone))
+        {
+            Permission.RequestUserPermission(Permission.Microphone);
+            dialog = new GameObject();
+        }
+#endif
         LogSystem.InstallDefaultReactors();
         Runnable.Run(CreateService());
         anim = GetComponent<Animator>();

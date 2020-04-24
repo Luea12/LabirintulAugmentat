@@ -43,8 +43,9 @@ public class Maze : MonoBehaviour
             var cell = GetRandomCell();
             var coin = Instantiate(coinPrefab);
             coin.transform.parent = cell.transform;
-            coin.transform.localPosition = new Vector3(0f, 0.5f, 0f);
+            coin.transform.localPosition = new Vector3(0f, 0f, 0f);
         }
+        transform.localScale = Vector3.one*5f;
     }
 
     private void DoFirstGenerationStep(List<MazeCell> activeCells)
@@ -138,8 +139,10 @@ public class Maze : MonoBehaviour
     public void GenerateEndPoint()
     {
 		var cell = GetRandomCell();
-		var coin = Instantiate(teleportPrefab);
-		coin.transform.parent = cell.transform;
-		coin.transform.localPosition = new Vector3(0f, 0.5f, 0f);
+		var teleporter = Instantiate(teleportPrefab);
+		teleporter.transform.parent = cell.transform;
+		teleporter.transform.localPosition = new Vector3(0f, 0f, 0f);
+        teleporter.transform.localScale = Vector3.one;
+
     }
 }

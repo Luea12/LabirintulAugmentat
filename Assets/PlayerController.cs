@@ -19,8 +19,8 @@ public class PlayerController : MonoBehaviour
     {
         currentCell = cell;
         Vector3 temp = cell.transform.position;
-        temp.y += 0.5f;
         transform.position = temp;
+        transform.localScale = Vector3.one*5f;
     }
 
     private void Look(MazeDirection direction)
@@ -70,7 +70,6 @@ public class PlayerController : MonoBehaviour
         }
         currentCell = dest;
         destPosition = dest.transform.position;
-        destPosition.y += 0.5f;
     }
 
     private void Start()
@@ -78,7 +77,7 @@ public class PlayerController : MonoBehaviour
         // start = transform.localPosition;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         if (!isMoving)
         {
@@ -101,13 +100,15 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            transform.position = Vector3.MoveTowards(transform.position, destPosition, 5.0f * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, destPosition, 1f* Time.deltaTime);
             isMoving = !(transform.position == destPosition);
         }
     }
 
     void OnTriggerEnter(Collider other)
     {
+
+        print("nasterea matii");
         if (other.gameObject.tag == "Coin")
         {
             Destroy(other.gameObject);

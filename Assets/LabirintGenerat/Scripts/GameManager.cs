@@ -59,6 +59,7 @@ public class GameManager : MonoBehaviour
         mazeInstance.transform.parent = gameArea;
         mazeInstance.transform.localPosition = new Vector3(0, 0, 0);
         mazeInstance.Generate();
+		mazeInstance.gameObject.name = "Maze";
         InstantiatePlayer();
     }
 
@@ -75,8 +76,9 @@ public class GameManager : MonoBehaviour
     {
         playerInstance = Instantiate(playerPrefab);
         MazeCell randomPlayerCell = mazeInstance.GetRandomCell();
-
+		playerInstance.transform.parent = gameArea;
         playerInstance.SetLocation(randomPlayerCell);
+		playerInstance.gameObject.name = "Player";
     }
 
     private void OnCoinPickup()

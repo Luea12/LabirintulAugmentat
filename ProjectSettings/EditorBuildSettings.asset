@@ -6,9 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/unity-sdk-4.5.0/Examples/ExampleStreaming.unity
-    guid: b442792768092494dbb04c41f6154ae2
-  - enabled: 1
     path: Assets/start.unity
     guid: d711c045b752a45459a204f31f544cba
   - enabled: 1

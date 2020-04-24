@@ -11,17 +11,6 @@ public class MazeCell : MonoBehaviour
 
     private int initializedEdgeCount;
 
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public MazeCellEdge GetEdge(MazeDirection direction)
     {
         return edges[(int)direction];

@@ -1,35 +1,94 @@
 ﻿using UnityEngine;
 using System.Collections;
-
+using UnityEngine.Events;
 public class GameManager : MonoBehaviour
 {
-	public Maze mazePrefab;
+    // Singleton
+    public static GameManager instance;
 
-	private Maze mazeInstance;
+    public Maze mazePrefab;
 
-	private void Start()
-	{
-		BeginGame();
-	}
+    public Maze mazeInstance
+    {
+        private set;
+        get;
+    }
 
-	private void Update()
-	{
-		if (Input.GetKeyDown(KeyCode.Space))
-		{
-			RestartGame();
-		}
-	}
+    public PlayerController playerPrefab;
 
-	private void BeginGame()
-	{
-		mazeInstance = Instantiate(mazePrefab) as Maze;
-		StartCoroutine(mazeInstance.Generate());
-	}
+    public PlayerController playerInstance
+    {
+        private set;
+        get;
+    }
 
-	private void RestartGame()
-	{
-		StopAllCoroutines();
-		Destroy(mazeInstance.gameObject);
-		BeginGame();
-	}
+    public Transform gameArea;
+
+    public int numberOfCoins = 3;
+
+    public int currentNumberOfCoins = 0;
+
+
+    public static UnityEvent CoinPickup;
+
+    private void Awake()
+    {
+        instance = this;
+        if (CoinPickup == null)
+            CoinPickup = new UnityEvent();
+
+        CoinPickup.AddListener(OnCoinPickup);
+    }
+
+    private void Start()
+    {
+        BeginGame();
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            RestartGame();
+        }
+    }
+
+    private void BeginGame()
+    {
+        mazeInstance = Instantiate(mazePrefab) as Maze;
+        mazeInstance.transform.parent = gameArea;
+        mazeInstance.transform.localPosition = new Vector3(0, 0, 0);
+        mazeInstance.Generate();
+		mazeInstance.gameObject.name = "Maze";
+        InstantiatePlayer();
+		gameArea.localScale = new Vector3(0.01f, 0.01f, 0.01f);
+    }
+
+    public void RestartGame()
+    {
+		currentNumberOfCoins = 0;
+        StopAllCoroutines();
+        Destroy(mazeInstance.gameObject);
+		Destroy(playerInstance.gameObject);
+        BeginGame();
+    }
+
+    private void InstantiatePlayer()
+    {
+        playerInstance = Instantiate(playerPrefab);
+        MazeCell randomPlayerCell = mazeInstance.GetRandomCell();
+		playerInstance.transform.parent = gameArea;
+        playerInstance.SetLocation(randomPlayerCell);
+		playerInstance.gameObject.name = "Player";
+    }
+
+    private void OnCoinPickup()
+    {
+        currentNumberOfCoins += 1;
+        if (currentNumberOfCoins == numberOfCoins)
+        {
+			mazeInstance.GenerateEndPoint();
+			numberOfCoins +=1;
+        }
+    }
 }

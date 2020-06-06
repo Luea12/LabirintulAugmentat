@@ -10,6 +10,7 @@ using IBM.Cloud.SDK.Authentication.Iam;
 using IBM.Cloud.SDK.Utilities;
 using IBM.Cloud.SDK.DataTypes;
 using UnityEngine.EventSystems;
+using UnityEngine.Android;
 
 
 public class RecordingButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
@@ -59,7 +60,7 @@ public class RecordingButton : MonoBehaviour, IPointerDownHandler, IPointerUpHan
         if (!Permission.HasUserAuthorizedPermission(Permission.Microphone))
         {
             Permission.RequestUserPermission(Permission.Microphone);
-            dialog = new GameObject();
+            GameObject dialog = new GameObject();
         }
 #endif
         LogSystem.InstallDefaultReactors();

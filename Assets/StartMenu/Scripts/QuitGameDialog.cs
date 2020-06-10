@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -6,25 +6,29 @@ using UnityEngine.UI;
 public class QuitGameDialog : MonoBehaviour
 {
     private GameObject exitMenu;
+    private GameObject startMenu;
 
     void Start () {
         exitMenu = GameObject.Find("ExitMenu");
-        HideExitMenu();
+        startMenu = GameObject.Find("StartMenu");
+        SwitchToStartMenu();
     }
 
     void Update () {
         if (Input.GetKey(KeyCode.Escape) && !exitMenu.activeSelf)
         {
-            ShowExitMenu();
+            SwitchToExitMenu();
         }
     }
-    
-    public void ShowExitMenu() {
-    	exitMenu.SetActive(true);
+
+    public void SwitchToStartMenu() {
+        startMenu.SetActive(true);
+        exitMenu.SetActive(false);
     }
 
-    public void HideExitMenu() {
-        exitMenu.SetActive(false);
+    public void SwitchToExitMenu() {
+        startMenu.SetActive(false);
+        exitMenu.SetActive(true);
     }
 
     public void ExitGame() {

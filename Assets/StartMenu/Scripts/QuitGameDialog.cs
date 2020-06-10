@@ -15,9 +15,15 @@ public class QuitGameDialog : MonoBehaviour
     }
 
     void Update () {
-        if (Input.GetKey(KeyCode.Escape) && !exitMenu.activeSelf)
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
-            SwitchToExitMenu();
+            if (startMenu.activeSelf) 
+            {
+                SwitchToExitMenu();
+            } else 
+            {
+                SwitchToStartMenu();
+            }
         }
     }
 

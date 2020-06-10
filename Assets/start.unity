@@ -805,19 +805,19 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 604573215}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 1197275732}
   - {fileID: 1203055407}
   - {fileID: 860089570}
-  - {fileID: 1197275732}
   m_Father: {fileID: 307479918}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.000061035156, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: -453.3, y: -179.3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &604573217
@@ -833,7 +833,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.084905684, g: 0.07529372, b: 0.07529372, a: 0.8156863}
+  m_Color: {r: 0.18039216, g: 0.29411766, b: 0.24705882, a: 0.31764707}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -1067,7 +1067,6 @@ GameObject:
   - component: {fileID: 860089573}
   - component: {fileID: 860089572}
   - component: {fileID: 860089571}
-  - component: {fileID: 860089574}
   m_Layer: 5
   m_Name: NoOption
   m_TagString: Untagged
@@ -1088,7 +1087,7 @@ RectTransform:
   m_Children:
   - {fileID: 1543364168}
   m_Father: {fileID: 604573216}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.55484337, y: 0.11000001}
   m_AnchorMax: {x: 0.9531687, y: 0.2711779}
@@ -1135,8 +1134,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 860089574}
-        m_MethodName: CloseExitMenu
+      - m_Target: {fileID: 307479919}
+        m_MethodName: SwitchToStartMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1181,18 +1180,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 860089569}
   m_CullTransparentMesh: 0
---- !u!114 &860089574
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 860089569}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7261284d9da73e370955b2c7e2c7a94e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &888327532
 GameObject:
   m_ObjectHideFlags: 0
@@ -1558,7 +1545,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 307479919}
-        m_MethodName: ShowMenu
+        m_MethodName: SwitchToExitMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1771,7 +1758,7 @@ GameObject:
   - component: {fileID: 1197275734}
   - component: {fileID: 1197275733}
   m_Layer: 5
-  m_Name: ExitManuTitle
+  m_Name: ExitMenuTitle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1789,11 +1776,11 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 604573216}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -30}
   m_SizeDelta: {x: 0, y: 73.3}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1197275733
@@ -1814,7 +1801,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Exit game?
+  m_text: Are you sure?
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a199dfdd5f26fe3818622f218cabb112, type: 2}
   m_sharedMaterial: {fileID: 21009835829906812, guid: a199dfdd5f26fe3818622f218cabb112,
@@ -1884,10 +1871,10 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 1197275733}
-    characterCount: 10
+    characterCount: 13
     spriteCount: 0
-    spaceCount: 1
-    wordCount: 2
+    spaceCount: 2
+    wordCount: 3
     linkCount: 0
     lineCount: 1
     pageCount: 1
@@ -1927,7 +1914,6 @@ GameObject:
   - component: {fileID: 1203055410}
   - component: {fileID: 1203055409}
   - component: {fileID: 1203055408}
-  - component: {fileID: 1203055411}
   m_Layer: 5
   m_Name: YesOption
   m_TagString: Untagged
@@ -1948,7 +1934,7 @@ RectTransform:
   m_Children:
   - {fileID: 145596804}
   m_Father: {fileID: 604573216}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.032674693, y: 0.11000001}
   m_AnchorMax: {x: 0.43, y: 0.2711779}
@@ -1995,7 +1981,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1203055411}
+      - m_Target: {fileID: 307479919}
         m_MethodName: ExitGame
         m_Mode: 1
         m_Arguments:
@@ -2041,18 +2027,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1203055406}
   m_CullTransparentMesh: 0
---- !u!114 &1203055411
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1203055406}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 69efa512a39a5f0c687a1c8211003241, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1296204540
 GameObject:
   m_ObjectHideFlags: 0
@@ -3096,6 +3070,7 @@ GameObject:
   - component: {fileID: 2076626669}
   - component: {fileID: 2076626668}
   - component: {fileID: 2076626667}
+  - component: {fileID: 2076626670}
   m_Layer: 5
   m_Name: OptionsButton
   m_TagString: Untagged
@@ -3162,7 +3137,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2076626668}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2076626670}
+        m_MethodName: LoadScene
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: OptionsScene
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2076626668
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3198,3 +3184,15 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2076626665}
   m_CullTransparentMesh: 0
+--- !u!114 &2076626670
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2076626665}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83db95ddc9708823caf9521b4b601c3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

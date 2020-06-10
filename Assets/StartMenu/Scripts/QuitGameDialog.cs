@@ -5,21 +5,29 @@ using UnityEngine.UI;
 
 public class QuitGameDialog : MonoBehaviour
 {
-    private GameObject menu;
+    private GameObject exitMenu;
 
     void Start () {
-        menu = GameObject.Find("ExitMenu");
-        menu.SetActive(false);
+        exitMenu = GameObject.Find("ExitMenu");
+        HideExitMenu();
     }
 
     void Update () {
-        if (Input.GetKey(KeyCode.Escape))
+        if (Input.GetKey(KeyCode.Escape) && !exitMenu.activeSelf)
         {
-            menu.SetActive(true);
+            ShowExitMenu();
         }
     }
     
-    public void ShowMenu() {
-    	menu.SetActive(true);
+    public void ShowExitMenu() {
+    	exitMenu.SetActive(true);
+    }
+
+    public void HideExitMenu() {
+        exitMenu.SetActive(false);
+    }
+
+    public void ExitGame() {
+    	Application.Quit();
     }
 }

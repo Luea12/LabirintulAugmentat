@@ -1067,7 +1067,6 @@ GameObject:
   - component: {fileID: 860089573}
   - component: {fileID: 860089572}
   - component: {fileID: 860089571}
-  - component: {fileID: 860089574}
   m_Layer: 5
   m_Name: NoOption
   m_TagString: Untagged
@@ -1135,8 +1134,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 860089574}
-        m_MethodName: CloseExitMenu
+      - m_Target: {fileID: 307479919}
+        m_MethodName: HideExitMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1181,18 +1180,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 860089569}
   m_CullTransparentMesh: 0
---- !u!114 &860089574
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 860089569}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7261284d9da73e370955b2c7e2c7a94e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &888327532
 GameObject:
   m_ObjectHideFlags: 0
@@ -1558,7 +1545,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 307479919}
-        m_MethodName: ShowMenu
+        m_MethodName: ShowExitMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1771,7 +1758,7 @@ GameObject:
   - component: {fileID: 1197275734}
   - component: {fileID: 1197275733}
   m_Layer: 5
-  m_Name: ExitManuTitle
+  m_Name: ExitMenuTitle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1927,7 +1914,6 @@ GameObject:
   - component: {fileID: 1203055410}
   - component: {fileID: 1203055409}
   - component: {fileID: 1203055408}
-  - component: {fileID: 1203055411}
   m_Layer: 5
   m_Name: YesOption
   m_TagString: Untagged
@@ -1995,7 +1981,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1203055411}
+      - m_Target: {fileID: 307479919}
         m_MethodName: ExitGame
         m_Mode: 1
         m_Arguments:
@@ -2041,18 +2027,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1203055406}
   m_CullTransparentMesh: 0
---- !u!114 &1203055411
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1203055406}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 69efa512a39a5f0c687a1c8211003241, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1296204540
 GameObject:
   m_ObjectHideFlags: 0

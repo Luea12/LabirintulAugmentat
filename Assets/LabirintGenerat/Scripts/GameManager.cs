@@ -4,7 +4,21 @@ using UnityEngine.Events;
 public class GameManager : MonoBehaviour
 {
     // Singleton
-    public static GameManager instance;
+    private static GameManager _instance;
+    public static GameManager instance
+    {
+        get { return _instance; }
+        // Set only once (in the Awake method)
+        private set
+        {
+            if (_instance != null)
+            {
+                return;
+            }
+
+            _instance = value;
+        }
+    }
 
     public Maze mazePrefab;
 
@@ -24,24 +38,22 @@ public class GameManager : MonoBehaviour
 
     public Transform gameArea;
 
-    public int numberOfCoins = 3;
+    public Difficulty currentDifficulty;
 
     public int currentNumberOfCoins = 0;
 
+    public int currentLevel = 0;
 
-    public static UnityEvent CoinPickup;
-
-    private void Awake()
+    public void Awake()
     {
         instance = this;
-        if (CoinPickup == null)
-            CoinPickup = new UnityEvent();
 
-        CoinPickup.AddListener(OnCoinPickup);
+        currentDifficulty = GlobalControl.instance.difficulties[GlobalControl.instance.selectedDifficultyIdx];
     }
 
     private void Start()
     {
+        GameEvents.current.OnCoinPickup += OnCoinPickup;
         BeginGame();
     }
 
@@ -58,6 +70,10 @@ public class GameManager : MonoBehaviour
         mazeInstance = Instantiate(mazePrefab) as Maze;
         mazeInstance.transform.parent = gameArea;
         mazeInstance.transform.localPosition = new Vector3(0, 0, 0);
+
+        int size = currentLevel*currentDifficulty.levelUpSize + currentDifficulty.startSize;
+        mazeInstance.size = new IntVector2(size, size);
+
         mazeInstance.Generate();
 		mazeInstance.gameObject.name = "Maze";
         InstantiatePlayer();
@@ -85,10 +101,9 @@ public class GameManager : MonoBehaviour
     private void OnCoinPickup()
     {
         currentNumberOfCoins += 1;
-        if (currentNumberOfCoins == numberOfCoins)
+        if (currentNumberOfCoins == currentDifficulty.treshold)
         {
 			mazeInstance.GenerateEndPoint();
-			numberOfCoins +=1;
         }
     }
 }

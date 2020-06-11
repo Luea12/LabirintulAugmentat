@@ -46,6 +46,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77934fa1097fdff44bb4afee3fb064c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dif:
+  - name: 
+    totalcoins: 0
+    treshold: 0
+    startSize: 0
+    levelUpSize: 0
+  - name: 
+    totalcoins: 0
+    treshold: 0
+    startSize: 0
+    levelUpSize: 0
+  - name: 
+    totalcoins: 0
+    treshold: 0
+    startSize: 0
+    levelUpSize: 0
+  - name: 
+    totalcoins: 0
+    treshold: 0
+    startSize: 0
+    levelUpSize: 0
+  - name: 
+    totalcoins: 0
+    treshold: 0
+    startSize: 0
+    levelUpSize: 0
 --- !u!65 &7026868290808734830
 BoxCollider:
   m_ObjectHideFlags: 0

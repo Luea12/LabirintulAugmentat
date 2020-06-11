@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -339,6 +339,17 @@ MonoBehaviour:
           m_StringArgument: GameModeScene
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1809396357}
+        m_MethodName: CommitGameModeToGlobalObject
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &375606848
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -475,6 +486,17 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: GameModeScene
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1809396357}
+        m_MethodName: CommitGameModeToGlobalObject
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &485597197
@@ -1024,6 +1046,17 @@ MonoBehaviour:
           m_StringArgument: GameScene
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1809396357}
+        m_MethodName: CommitLevelToGlobalObject
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 4
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &725348610
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1220,6 +1253,17 @@ MonoBehaviour:
           m_StringArgument: GameScene
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1809396357}
+        m_MethodName: CommitLevelToGlobalObject
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &765278868
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1319,7 +1363,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &901779005
 GameObject:
@@ -2143,6 +2187,17 @@ MonoBehaviour:
           m_StringArgument: GameScene
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1809396357}
+        m_MethodName: CommitLevelToGlobalObject
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1110021316
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2437,6 +2492,17 @@ MonoBehaviour:
           m_StringArgument: GameScene
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1809396357}
+        m_MethodName: CommitLevelToGlobalObject
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1243191866
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2573,6 +2639,17 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: GameScene
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1809396357}
+        m_MethodName: CommitLevelToGlobalObject
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 3
+          m_FloatArgument: 0
+          m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1302742590
@@ -3660,7 +3737,7 @@ RectTransform:
   - {fileID: 1090375032}
   - {fileID: 586404376}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}

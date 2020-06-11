@@ -4,7 +4,6 @@ using UnityEngine;
 using System;
 using UnityEngine.Events;
 
-
 public class PlayerController : MonoBehaviour
 {
 
@@ -74,7 +73,6 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
-        // start = transform.localPosition;
     }
 
     private void FixedUpdate()
@@ -112,11 +110,13 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.tag == "Coin")
         {
             Destroy(other.gameObject);
-            GameManager.CoinPickup.Invoke();
+            //GameManager.CoinPickup.Invoke();
+            GameEvents.current.CoinPickup();
         }
 
         if(other.gameObject.tag == "Teleport")
         {
+            GameManager.instance.currentLevel++;
             GameManager.instance.RestartGame();
         }
     }

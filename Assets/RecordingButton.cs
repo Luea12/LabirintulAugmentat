@@ -11,6 +11,7 @@ using IBM.Cloud.SDK.Utilities;
 using IBM.Cloud.SDK.DataTypes;
 using UnityEngine.EventSystems;
 using UnityEngine.Android;
+using TMPro;
 
 
 public class RecordingButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
@@ -54,6 +55,9 @@ public class RecordingButton : MonoBehaviour, IPointerDownHandler, IPointerUpHan
     private Animator anim;
 
     private bool ispressed = false;
+
+    public TextMeshProUGUI spokenText;
+    
     void Start()
     {
 #if PLATFORM_ANDROID
@@ -209,6 +213,8 @@ public class RecordingButton : MonoBehaviour, IPointerDownHandler, IPointerUpHan
             {
                 foreach (var alt in res.alternatives)
                 {
+                    spokenText.text = alt.transcript;
+                    spokenText.transform.parent.gameObject.active = true;
                     if (res.final)
                     {
                         bool found = false;
@@ -224,6 +230,7 @@ public class RecordingButton : MonoBehaviour, IPointerDownHandler, IPointerUpHan
                                     ispressed = false;
                                     anim.SetBool("recording", false);
                                     found = true;
+                                    spokenText.transform.parent.gameObject.active = false;
                                     break;
                                 }
                             }

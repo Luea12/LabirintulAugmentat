@@ -4,7 +4,6 @@ using UnityEngine;
 using System;
 using UnityEngine.Events;
 
-
 public class PlayerController : MonoBehaviour
 {
 
@@ -74,7 +73,13 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
-        // start = transform.localPosition;
+    }
+
+    public void SetPlayerModel(GameObject model)
+    {
+        GameObject instance = Instantiate(model);
+        instance.transform.SetParent(this.transform);
+        instance.transform.position = new Vector3(0,0.5f,0);
     }
 
     private void FixedUpdate()
@@ -108,15 +113,16 @@ public class PlayerController : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
 
-        print("nasterea matii");
         if (other.gameObject.tag == "Coin")
         {
             Destroy(other.gameObject);
-            GameManager.CoinPickup.Invoke();
+            //GameManager.CoinPickup.Invoke();
+            GameEvents.current.CoinPickup();
         }
 
         if(other.gameObject.tag == "Teleport")
         {
+            GameManager.instance.currentLevel++;
             GameManager.instance.RestartGame();
         }
     }

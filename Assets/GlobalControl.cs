@@ -6,6 +6,7 @@ public class GlobalControl : MonoBehaviour
 {
     public Difficulty[] difficulties;
     public int selectedDifficultyIdx;
+    public int selectedGamemode;
 
     private static GlobalControl _instance;
     public static GlobalControl instance
@@ -32,12 +33,5 @@ public class GlobalControl : MonoBehaviour
     {
         selectedDifficultyIdx = 0;
         DontDestroyOnLoad(this);
-    }
-
-
-
-    public void OnSelectedDifficulty(int dif)
-    {
-        selectedDifficultyIdx = dif;
     }
 }

@@ -38,7 +38,7 @@ public class Maze : MonoBehaviour
         }
 
         // instantiate coins
-        for (int i = 0; i < GameManager.instance.currentDifficulty.totalcoins; i++)
+        for (int i = 0; i <= GameManager.instance.currentDifficulty.totalcoins; i++)
         {
             var cell = GetRandomCell();
             var coin = Instantiate(coinPrefab);

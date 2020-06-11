@@ -9,6 +9,7 @@ public class GameModeAndLevelSelection : MonoBehaviour
     private GameObject gameModeMenu;
     private GameObject levelMenu;
 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -40,5 +41,15 @@ public class GameModeAndLevelSelection : MonoBehaviour
     public void SwitchToLevelMenu() {
         gameModeMenu.SetActive(false);
         levelMenu.SetActive(true);
+    }
+
+    public void CommitLevelToGlobalObject(int level) 
+    {
+        GlobalControl.instance.selectedDifficultyIdx = level;
+    }
+
+    public void CommitGameModeToGlobalObject(int gamemode)
+    {
+        GlobalControl.instance.selectedGamemode = gamemode;
     }
 }

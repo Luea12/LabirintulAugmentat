@@ -44,6 +44,8 @@ public class GameManager : MonoBehaviour
 
     public int currentLevel = 0;
 
+    public GameObject tempModel;
+
     public void Awake()
     {
         instance = this;
@@ -92,6 +94,7 @@ public class GameManager : MonoBehaviour
     private void InstantiatePlayer()
     {
         playerInstance = Instantiate(playerPrefab);
+        playerInstance.SetPlayerModel(tempModel);
         MazeCell randomPlayerCell = mazeInstance.GetRandomCell();
 		playerInstance.transform.parent = gameArea;
         playerInstance.SetLocation(randomPlayerCell);

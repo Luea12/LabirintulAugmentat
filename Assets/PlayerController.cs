@@ -75,6 +75,13 @@ public class PlayerController : MonoBehaviour
     {
     }
 
+    public void SetPlayerModel(GameObject model)
+    {
+        GameObject instance = Instantiate(model);
+        instance.transform.SetParent(this.transform);
+        instance.transform.position = new Vector3(0,0.5f,0);
+    }
+
     private void FixedUpdate()
     {
         if (!isMoving)
@@ -106,7 +113,6 @@ public class PlayerController : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
 
-        print("nasterea matii");
         if (other.gameObject.tag == "Coin")
         {
             Destroy(other.gameObject);

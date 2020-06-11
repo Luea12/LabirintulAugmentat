@@ -1,25 +1,43 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class QuitGameDialog : MonoBehaviour
 {
-    private GameObject menu;
+    private GameObject exitMenu;
+    private GameObject startMenu;
 
     void Start () {
-        menu = GameObject.Find("ExitMenu");
-        menu.SetActive(false);
+        exitMenu = GameObject.Find("ExitMenu");
+        startMenu = GameObject.Find("StartMenu");
+        SwitchToStartMenu();
     }
 
     void Update () {
-        if (Input.GetKey(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
-            menu.SetActive(true);
+            if (startMenu.activeSelf) 
+            {
+                SwitchToExitMenu();
+            } else 
+            {
+                SwitchToStartMenu();
+            }
         }
     }
-    
-    public void ShowMenu() {
-    	menu.SetActive(true);
+
+    public void SwitchToStartMenu() {
+        startMenu.SetActive(true);
+        exitMenu.SetActive(false);
+    }
+
+    public void SwitchToExitMenu() {
+        startMenu.SetActive(false);
+        exitMenu.SetActive(true);
+    }
+
+    public void ExitGame() {
+    	Application.Quit();
     }
 }

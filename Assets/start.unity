@@ -518,12 +518,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   difficulties:
   - name: Dif1
-    totalcoins: 5
+    totalcoins: 10
     treshold: 5
     startSize: 10
     levelUpSize: 1
   - name: Dif1
-    totalcoins: 5
+    totalcoins: 30
     treshold: 5
     startSize: 10
     levelUpSize: 1

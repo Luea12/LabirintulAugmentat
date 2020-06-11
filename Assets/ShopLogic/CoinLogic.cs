@@ -24,13 +24,13 @@ public class CoinLogic : MonoBehaviour
 
         // Instantiate the characters that are available for purchase
         // Call this as many times as necessary
-        CreateAvailableSlot(new Vector3(0, 50, 0));
-        CreateAvailableSlot(new Vector3(0, 250, 0));
+        CreateAvailableSlot(new Vector3(0, 50, 1));
+        CreateAvailableSlot(new Vector3(0, 250, 1));
 
         // Instantiate the characters that are owned by the user
         // Call this as many times as necessary
-        CreateOwnedSlot(new Vector3(0, 50, 0));
-        CreateOwnedSlot(new Vector3(0, 250, 0));
+        CreateOwnedSlot(new Vector3(0, 50, 1));
+        CreateOwnedSlot(new Vector3(0, 250, 1));
     }
 
     // Update is called once per frame
@@ -41,12 +41,13 @@ public class CoinLogic : MonoBehaviour
 
     public void consumeCoins(int coins)
     {
-        this.shop.coins -= coins;
+        shop.coins -= coins;
     }
 
     void readShop()
     {
-        string json = File.ReadAllText(Application.dataPath + "/ShopLogic/Shop.json");
+        TextAsset file = Resources.Load("Shop") as TextAsset;
+        string json = file.ToString();
         shop = JsonConvert.DeserializeObject<Shop>(json);
     }
 
@@ -67,7 +68,7 @@ public class CoinLogic : MonoBehaviour
     class Shop
     {
         public int coins { get; set; }
-        public List<GameObject> ownedCharacters { get; set; }
-        public List<GameObject> availableCharacters { get; set; }
+        public List<GameObject> ownedCharacters { get; set; } = new List<GameObject>();
+        public List<GameObject> availableCharacters { get; set; } = new List<GameObject>();
     }
 }

@@ -1,6 +1,4 @@
 ﻿using Newtonsoft.Json;
-using System.Collections.Generic;
-using System.IO;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -55,20 +53,39 @@ public class CoinLogic : MonoBehaviour
     {
         GameObject availableSlot = Instantiate(availableCharacterPrefab, position, Quaternion.identity);
         availableSlot.transform.SetParent(AvailablePanel.content.transform, false);
+
         shop.availableCharacters.Add(availableSlot);
     }
 
-    void CreateOwnedSlot(Vector3 position)
+    GameObject CreateOwnedSlot(Vector3 position)
     {
         GameObject ownedSlot = Instantiate(ownedCharacterPrefab, position, Quaternion.identity);
         ownedSlot.transform.SetParent(OwnedPanel.content.transform, false);
         shop.ownedCharacters.Add(ownedSlot);
+
+        return ownedSlot;
     }
 
-    class Shop
+    public void BuyCharacter(GameObject availableCharacter)
     {
-        public int coins { get; set; }
-        public List<GameObject> ownedCharacters { get; set; } = new List<GameObject>();
-        public List<GameObject> availableCharacters { get; set; } = new List<GameObject>();
+
+        //var availableCharacter = UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject;
+
+        shop.availableCharacters.Remove(availableCharacter);
+
+        var newOwned = CreateOwnedSlot(new Vector3(0, -150, 1));
+
+        /**
+         * TODO: Copy values from available character over to the newly owned character
+         * and persist everything to storage
+         */
+
+        shop.ownedCharacters.Add(newOwned);
+
+        Destroy(availableCharacter);
+
+        //Getting back to the shop menu
+        var dialog = FindObjectOfType<BuyCheckDialog>();
+        dialog.SwitchToShopMenu();
     }
 }

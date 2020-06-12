@@ -11,7 +11,7 @@ public class ShowObjectOnPlane : MonoBehaviour
     private GameObject spawnedObject;
 
     [SerializeField]
-    private string PlaceableObjectName;
+    public string PlaceableObjectName;
 
     static List<ARRaycastHit> s_Hits = new List<ARRaycastHit>();
 

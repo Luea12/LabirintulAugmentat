@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
+using TMPro;
 
 [RequireComponent(typeof(ARPlaneManager))]
 public class PlaneDetectionToggle : MonoBehaviour
@@ -11,7 +12,7 @@ public class PlaneDetectionToggle : MonoBehaviour
     private ARPlaneManager planeManager;
     
     [SerializeField]
-    private Text toggleButtonText;
+    private TextMeshProUGUI toggleButtonText;
 
     private void Awake()
     {

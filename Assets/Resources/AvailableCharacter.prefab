@@ -167,6 +167,7 @@ GameObject:
   - component: {fileID: 864187310614019767}
   - component: {fileID: 864187310614019764}
   - component: {fileID: 114883337048912344}
+  - component: {fileID: 3982364813101260157}
   m_Layer: 5
   m_Name: AvailableCharacter
   m_TagString: Untagged
@@ -244,6 +245,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e3a9a5383b05e1545a3d4bb551fee832, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3982364813101260157
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 864187310614019766}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 345add98edae95f4598b7a90801a48f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &864187310683173916
@@ -459,7 +472,7 @@ MonoBehaviour:
   m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:

@@ -2467,12 +2467,12 @@ MonoBehaviour:
   - {fileID: 21300000, guid: ae6c2a027c9ca7196b26be8e732e8620, type: 3}
   - {fileID: 21300000, guid: ae6c2a027c9ca7196b26be8e732e8620, type: 3}
   - {fileID: 21300000, guid: ae6c2a027c9ca7196b26be8e732e8620, type: 3}
-  availablePrices: 0f0000002d00000041010000
+  - {fileID: 21300000, guid: ae6c2a027c9ca7196b26be8e732e8620, type: 3}
+  - {fileID: 21300000, guid: ae6c2a027c9ca7196b26be8e732e8620, type: 3}
+  availablePrices: 000000000f0000002d00000041010000f4010000
+  availableIndex: 0000000001000000020000000300000004000000
   OwnedPanel: {fileID: 360877157}
-  ownedSprites:
-  - {fileID: 21300000, guid: 81fa5a1e6d19305b29527ad6a606aa57, type: 3}
-  - {fileID: 21300000, guid: 81fa5a1e6d19305b29527ad6a606aa57, type: 3}
-  - {fileID: 21300000, guid: 81fa5a1e6d19305b29527ad6a606aa57, type: 3}
+  ownedSprites: []
 --- !u!114 &1155643717
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2702,7 +2702,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1207874564}
   m_Direction: 2
   m_Value: 0.9999999
-  m_Size: 0.53392386
+  m_Size: 0.533924
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -2797,7 +2797,7 @@ GameObject:
   - component: {fileID: 1392947727}
   - component: {fileID: 1392947726}
   m_Layer: 5
-  m_Name: Equiped
+  m_Name: Equipped
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2840,7 +2840,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Equiped character
+  m_text: Equipped character
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a199dfdd5f26fe3818622f218cabb112, type: 2}
   m_sharedMaterial: {fileID: 21009835829906812, guid: a199dfdd5f26fe3818622f218cabb112,
@@ -2910,7 +2910,7 @@ MonoBehaviour:
   m_margin: {x: -2.1285238, y: -2.1286736, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 1392947726}
-    characterCount: 17
+    characterCount: 18
     spriteCount: 0
     spaceCount: 1
     wordCount: 2
@@ -3013,7 +3013,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0.18039216, g: 0.29411766, b: 0.24705882, a: 0}
   m_projectionMatrixMode: 1
   m_SensorSize: {x: 36, y: 24}
   m_LensShift: {x: 0, y: 0}
@@ -3346,7 +3346,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.000061035156, y: 0.000061035156}
+  m_AnchoredPosition: {x: 0, y: 0.000061035156}
   m_SizeDelta: {x: -453.3, y: -179.30005}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1589398652
@@ -3468,7 +3468,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 60.3
+  m_fontSize: 59.1
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -4034,7 +4034,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1116025927}
   m_Direction: 2
   m_Value: 0.9999999
-  m_Size: 0.5339239
+  m_Size: 0.533924
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:

@@ -15,7 +15,7 @@ public class ProfileData
         difficulty = new bool[] { true, false, false, false, false };
         character = new bool[] { true, false, false, false, false };
         currentCharacter = 0;
-        coins = 0;
+        coins = 500;
         volume = 0.5f;
     }
 
@@ -48,6 +48,7 @@ public class ProfileData
         if (value >= 0 && value < 5)
         {
             currentCharacter = value;
+            Debug.Log(value);
             SaveSystem.Save(this);
         }
     }

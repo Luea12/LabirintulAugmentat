@@ -18,6 +18,31 @@ public class GameEvents : MonoBehaviour
         OnCoinPickup?.Invoke();
     }
 
+    public event Action OnLevelUp;
+    public void LevelUp()
+    {
+        OnLevelUp?.Invoke();
+    }
+
+    public event Action OnGameStart;
+    public void GameStart()
+    {
+        OnGameStart?.Invoke();
+    }
+
+    public event Action OnGamePause;
+    public void GamePause()
+    {
+        OnGamePause?.Invoke();
+    }
+
+
+    public event Action OnGameResume;
+    public void GameResume()
+    {
+        OnGameResume?.Invoke();
+    }
+
     public event Action OnGameWin;
     public void GameWin()
     {

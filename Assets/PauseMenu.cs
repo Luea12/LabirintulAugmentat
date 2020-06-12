@@ -15,14 +15,17 @@ public class PauseMenu : MonoBehaviour
     public GameObject winScreen;
     public GameObject lostScreen;
 
+    void Awake()
+    { 
+        GameEvents.current.OnGameWin += ShowWinScreen;
+        GameEvents.current.OnGameLost += ShowLostScreen;
+    }
+
     void Start()
     {
         gameUI.SetActive(true);
         pauseMenu.SetActive(false);
         winScreen.SetActive(false);
-
-        GameEvents.current.OnGameWin += ShowWinScreen;
-        GameEvents.current.OnGameLost += ShowLostScreen;
     }
 
     // Update is called once per frame
@@ -45,6 +48,7 @@ public class PauseMenu : MonoBehaviour
         pauseMenu.SetActive(false);
         Time.timeScale = 1f;
         GameIsPaused = false;
+        GameEvents.current.GameResume();
     }
 
     void Pause() {
@@ -53,6 +57,7 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 0f;
         GameIsPaused = true;
         AnimateScreen(pauseMenu);
+        GameEvents.current.GamePause();
     }
 
     void ShowWinScreen()

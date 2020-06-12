@@ -40,6 +40,8 @@ public class GameManager : MonoBehaviour
 
     public Difficulty currentDifficulty;
 
+    public int selectedGamemode;
+
     public int currentNumberOfCoins = 0;
 
     public int currentLevel = 0;
@@ -51,10 +53,13 @@ public class GameManager : MonoBehaviour
         instance = this;
 
         currentDifficulty = GlobalControl.instance.difficulties[GlobalControl.instance.selectedDifficultyIdx];
+        selectedGamemode = GlobalControl.instance.selectedGamemode;
+
     }
 
     private void Start()
     {
+
         GameEvents.current.OnCoinPickup += OnCoinPickup;
         GameEvents.current.OnGameWin += OnGameWin;
         BeginGame();
@@ -81,6 +86,8 @@ public class GameManager : MonoBehaviour
 		mazeInstance.gameObject.name = "Maze";
         InstantiatePlayer();
 		gameArea.localScale = new Vector3(0.01f, 0.01f, 0.01f);
+
+        GameEvents.current.GameStart();
     }
 
     public void RestartGame()

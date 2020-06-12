@@ -40,6 +40,8 @@ public class GameManager : MonoBehaviour
 
     public Difficulty currentDifficulty;
 
+    public int currentDifficultyIdx;
+
     public int selectedGamemode;
 
     public int currentNumberOfCoins = 0;
@@ -53,10 +55,9 @@ public class GameManager : MonoBehaviour
     public void Awake()
     {
         instance = this;
-
-        currentDifficulty = GlobalControl.instance.difficulties[GlobalControl.instance.selectedDifficultyIdx];
+        currentDifficultyIdx = GlobalControl.instance.selectedDifficultyIdx;
+        currentDifficulty = GlobalControl.instance.difficulties[currentDifficultyIdx];
         selectedGamemode = GlobalControl.instance.selectedGamemode;
-
     }
 
     private void Start()
@@ -123,6 +124,6 @@ public class GameManager : MonoBehaviour
 
     private void OnGameWin()
     {
-        print("win");
+        profile.UnlockDifficulty(currentDifficultyIdx + 1);
     }
 }

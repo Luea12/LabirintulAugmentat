@@ -15,11 +15,44 @@ public class GameEvents : MonoBehaviour
     public event Action OnCoinPickup;
     public void CoinPickup()
     {
-        if (OnCoinPickup != null)
-        {
-            OnCoinPickup();
-        }
+        OnCoinPickup?.Invoke();
     }
 
+    public event Action OnLevelUp;
+    public void LevelUp()
+    {
+        OnLevelUp?.Invoke();
+    }
+
+    public event Action OnGameStart;
+    public void GameStart()
+    {
+        OnGameStart?.Invoke();
+    }
+
+    public event Action OnGamePause;
+    public void GamePause()
+    {
+        OnGamePause?.Invoke();
+    }
+
+
+    public event Action OnGameResume;
+    public void GameResume()
+    {
+        OnGameResume?.Invoke();
+    }
+
+    public event Action OnGameWin;
+    public void GameWin()
+    {
+        OnGameWin?.Invoke();
+    }
+
+    public event Action OnGameLost;
+    public void GameLost()
+    {
+        OnGameLost?.Invoke();
+    }
 
 }

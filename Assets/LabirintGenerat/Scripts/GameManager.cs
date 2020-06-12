@@ -40,22 +40,32 @@ public class GameManager : MonoBehaviour
 
     public Difficulty currentDifficulty;
 
+    public int currentDifficultyIdx;
+
+    public int selectedGamemode;
+
     public int currentNumberOfCoins = 0;
 
     public int currentLevel = 0;
 
     public GameObject tempModel;
 
+    private ProfileData profile;
+
     public void Awake()
     {
         instance = this;
-
-        currentDifficulty = GlobalControl.instance.difficulties[GlobalControl.instance.selectedDifficultyIdx];
+        currentDifficultyIdx = GlobalControl.instance.selectedDifficultyIdx;
+        currentDifficulty = GlobalControl.instance.difficulties[currentDifficultyIdx];
+        selectedGamemode = GlobalControl.instance.selectedGamemode;
     }
 
     private void Start()
     {
+        profile = ProfileData.Load();
+        currentNumberOfCoins = profile.GetCoins();
         GameEvents.current.OnCoinPickup += OnCoinPickup;
+        GameEvents.current.OnGameWin += OnGameWin;
         BeginGame();
     }
 
@@ -80,6 +90,8 @@ public class GameManager : MonoBehaviour
 		mazeInstance.gameObject.name = "Maze";
         InstantiatePlayer();
 		gameArea.localScale = new Vector3(0.01f, 0.01f, 0.01f);
+
+        GameEvents.current.GameStart();
     }
 
     public void RestartGame()
@@ -108,5 +120,10 @@ public class GameManager : MonoBehaviour
         {
 			mazeInstance.GenerateEndPoint();
         }
+    }
+
+    private void OnGameWin()
+    {
+        profile.UnlockDifficulty(currentDifficultyIdx + 1);
     }
 }

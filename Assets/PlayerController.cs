@@ -123,7 +123,16 @@ public class PlayerController : MonoBehaviour
         if(other.gameObject.tag == "Teleport")
         {
             GameManager.instance.currentLevel++;
-            GameManager.instance.RestartGame();
+
+            if(GameManager.instance.currentLevel <= GameManager.instance.currentDifficulty.numberOfLevels)
+            {
+                GameEvents.current.LevelUp();
+                GameManager.instance.RestartGame();
+            }
+            else
+            {
+                GameEvents.current.GameWin();
+            }
         }
     }
 }

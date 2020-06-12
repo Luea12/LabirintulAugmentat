@@ -8,20 +8,27 @@ public class PauseMenu : MonoBehaviour
 {
 
     public static bool GameIsPaused = false;
+    public static bool CanPause = true;
 
     public GameObject pauseMenu;
     public GameObject gameUI;
+    public GameObject winScreen;
+    public GameObject lostScreen;
 
     void Start()
     {
         gameUI.SetActive(true);
         pauseMenu.SetActive(false);
+        winScreen.SetActive(false);
+
+        GameEvents.current.OnGameWin += ShowWinScreen;
+        GameEvents.current.OnGameLost += ShowLostScreen;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && CanPause)
         {
             if (GameIsPaused)
             {
@@ -45,15 +52,39 @@ public class PauseMenu : MonoBehaviour
         pauseMenu.SetActive(true);
         Time.timeScale = 0f;
         GameIsPaused = true;
-        AnimatePauseMenu();
+        AnimateScreen(pauseMenu);
     }
-    private void AnimatePauseMenu() {
-        Image image = pauseMenu.GetComponent<Image>();
+
+    void ShowWinScreen()
+    {
+        gameUI.SetActive(false);
+        pauseMenu.SetActive(false);
+        winScreen.SetActive(true);
+        Time.timeScale = 0f;
+        GameIsPaused = true;
+        CanPause = false;
+        AnimateScreen(winScreen);
+    }
+
+    void ShowLostScreen()
+    {
+        gameUI.SetActive(false);
+        pauseMenu.SetActive(false);
+        lostScreen.SetActive(true);
+        Time.timeScale = 0f;
+        GameIsPaused = true;
+        CanPause = false;
+        AnimateScreen(lostScreen);
+    }
+
+    private void AnimateScreen(GameObject Screen) {
+        Image image = Screen.GetComponent<Image>();
         image.canvasRenderer.SetAlpha(0.0f);
         image.CrossFadeAlpha(0.6f, 0.35f, true);
     }
 
     public void LoadMenu() {
+        CanPause = true;
         Time.timeScale = 1f;
         SceneManager.LoadSceneAsync("start");
     }

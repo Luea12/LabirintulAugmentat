@@ -60,6 +60,7 @@ public class GameManager : MonoBehaviour
         profile = ProfileData.Load();
         currentNumberOfCoins = profile.GetCoins();
         GameEvents.current.OnCoinPickup += OnCoinPickup;
+        GameEvents.current.OnGameWin += OnGameWin;
         BeginGame();
     }
 
@@ -112,5 +113,10 @@ public class GameManager : MonoBehaviour
         {
 			mazeInstance.GenerateEndPoint();
         }
+    }
+
+    private void OnGameWin()
+    {
+        print("win");
     }
 }

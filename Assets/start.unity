@@ -519,29 +519,34 @@ MonoBehaviour:
   difficulties:
   - name: Dif1
     totalcoins: 10
-    treshold: 5
+    treshold: 1
     startSize: 10
     levelUpSize: 1
+    numberOfLevels: 0
   - name: Dif1
     totalcoins: 30
     treshold: 5
     startSize: 10
     levelUpSize: 1
+    numberOfLevels: 0
   - name: Dif1
     totalcoins: 5
     treshold: 5
     startSize: 10
     levelUpSize: 1
+    numberOfLevels: 0
   - name: Dif1
     totalcoins: 5
     treshold: 5
     startSize: 10
     levelUpSize: 1
+    numberOfLevels: 0
   - name: Dif1
     totalcoins: 5
     treshold: 5
     startSize: 10
     levelUpSize: 1
+    numberOfLevels: 0
   selectedDifficultyIdx: 0
   selectedGamemode: 0
 --- !u!4 &303300893

@@ -19,4 +19,7 @@ public class Difficulty
 
     [Tooltip("Value to increase each level by")]
     public ushort levelUpSize; // newLevelSize = oldLevelSize + levelUpSize
+
+    [Tooltip("Number of levels needed to win")]
+    public ushort numberOfLevels;
 }

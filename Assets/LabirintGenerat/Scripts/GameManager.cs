@@ -46,6 +46,8 @@ public class GameManager : MonoBehaviour
 
     public GameObject tempModel;
 
+    private ProfileData profile;
+
     public void Awake()
     {
         instance = this;
@@ -55,6 +57,8 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        profile = ProfileData.Load();
+        currentNumberOfCoins = profile.GetCoins();
         GameEvents.current.OnCoinPickup += OnCoinPickup;
         BeginGame();
     }

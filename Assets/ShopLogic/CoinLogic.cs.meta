@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: b4eefada7ee044c4ebd0076603c3891b
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - availableCharacterPrefab: {fileID: 864187310614019766, guid: 71b685a483ead954dbb777c19a8d17f9,
+      type: 3}
+  - ownedCharacterPrefab: {fileID: 644820633664494695, guid: 7822f233af13bb14fb1b3599d8caa757,
+      type: 3}
+  - AvailablePanel: {instanceID: 0}
+  - OwnedPanel: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

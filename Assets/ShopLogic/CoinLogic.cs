@@ -9,8 +9,16 @@ public class CoinLogic : MonoBehaviour
     private TextMeshProUGUI coinsValue;
     public GameObject availableCharacterPrefab;
     public GameObject ownedCharacterPrefab;
+    
     public ScrollRect AvailablePanel;
+    public Sprite[] availableSprites;
+    public int[] availablePrices;
+
     public ScrollRect OwnedPanel;
+    public Sprite[] ownedSprites;
+
+    private int availableYPos = 300;
+    private int ownedYPos = 300;
 
     // Start is called before the first frame update
     void Start()
@@ -21,14 +29,10 @@ public class CoinLogic : MonoBehaviour
         coinsValue.text = shop.coins.ToString();
 
         // Instantiate the characters that are available for purchase
-        // Call this as many times as necessary
-        CreateAvailableSlot(new Vector3(0, 50, 1));
-        CreateAvailableSlot(new Vector3(0, 250, 1));
+        CreateAvailableSlots();
 
         // Instantiate the characters that are owned by the user
-        // Call this as many times as necessary
-        CreateOwnedSlot(new Vector3(0, 50, 1));
-        CreateOwnedSlot(new Vector3(0, 250, 1));
+        CreateOwnedSlots();
     }
 
     // Update is called once per frame
@@ -49,21 +53,73 @@ public class CoinLogic : MonoBehaviour
         shop = JsonConvert.DeserializeObject<Shop>(json);
     }
 
-    void CreateAvailableSlot(Vector3 position)
+    void CreateAvailableSlots()
     {
-        GameObject availableSlot = Instantiate(availableCharacterPrefab, position, Quaternion.identity);
-        availableSlot.transform.SetParent(AvailablePanel.content.transform, false);
+        for (int i = 0; i < availableSprites.Length; i++)
+        {
+            // Insantiate slot
+            var slot = Instantiate(availableCharacterPrefab, new Vector3(0, availableYPos, 0), Quaternion.identity);
+            slot.transform.SetParent(AvailablePanel.content.transform, false);
 
-        shop.availableCharacters.Add(availableSlot);
+            // Change the character name to be the sprite name
+            slot.name = availableSprites[i].name;
+            var slotName = slot.transform.Find("Name").GetComponent<TextMeshProUGUI>();
+            slotName.text = availableSprites[i].name;
+
+            // Change Image sprite
+            var spriteComponent = slot.transform.Find("Image").GetComponent<Image>();
+            spriteComponent.sprite = availableSprites[i];
+            spriteComponent.preserveAspect = true;
+            spriteComponent.useSpriteMesh = true;
+            spriteComponent.raycastTarget = true;
+            spriteComponent.type = Image.Type.Simple;
+
+            // Change character price
+            slot.transform.Find("PriceValue").GetComponent<TextMeshProUGUI>().text = availablePrices[i].ToString();
+
+            // Change the next instantiation position
+            availableYPos -= 150;
+
+            // Save in shop object (maybe that's not needed)
+            shop.availableCharacters.Add(slot);
+        }
     }
 
-    GameObject CreateOwnedSlot(Vector3 position)
+    void CreateOwnedSlots()
     {
-        GameObject ownedSlot = Instantiate(ownedCharacterPrefab, position, Quaternion.identity);
-        ownedSlot.transform.SetParent(OwnedPanel.content.transform, false);
-        shop.ownedCharacters.Add(ownedSlot);
+        for (int i = 0; i < ownedSprites.Length; i++)
+        {
+            // Insantiate slot
+            var slot = Instantiate(ownedCharacterPrefab, new Vector3(0, ownedYPos, 0), Quaternion.identity);
+            slot.transform.SetParent(OwnedPanel.content.transform, false);
 
-        return ownedSlot;
+            // Change the character name to be the sprite name
+            slot.name = ownedSprites[i].name;
+            var slotName = slot.transform.Find("Name").GetComponent<TextMeshProUGUI>();
+            slotName.text = ownedSprites[i].name;
+
+            // Change Image sprite
+            var spriteComponent = slot.transform.Find("Image").GetComponent<Image>();
+            spriteComponent.sprite = ownedSprites[i];
+            spriteComponent.preserveAspect = true;
+            spriteComponent.useSpriteMesh = true;
+            spriteComponent.raycastTarget = true;
+            spriteComponent.type = Image.Type.Simple;
+
+            // Change the next instantiation position
+            ownedYPos -= 150;
+
+            // Save in shop object (maybe that's not needed)
+            shop.ownedCharacters.Add(slot);
+        }
+    }
+
+    GameObject CreateOwnedSlot(Vector3 v)
+    {
+        var slot = Instantiate(ownedCharacterPrefab, v, Quaternion.identity);
+        slot.transform.SetParent(OwnedPanel.content.transform, false);
+
+        return slot;
     }
 
     public void BuyCharacter(GameObject availableCharacter)
@@ -73,7 +129,8 @@ public class CoinLogic : MonoBehaviour
 
         shop.availableCharacters.Remove(availableCharacter);
 
-        var newOwned = CreateOwnedSlot(new Vector3(0, -150, 1));
+        var newOwned = CreateOwnedSlot(new Vector3(0, ownedYPos, 0));
+        ownedYPos -= 150;
 
         /**
          * TODO: Copy values from available character over to the newly owned character

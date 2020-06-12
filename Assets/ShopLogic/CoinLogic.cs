@@ -2,13 +2,15 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections.Generic;
 
 public class CoinLogic : MonoBehaviour
 {
+    private ProfileData profile;
     private Shop shop;
     private TextMeshProUGUI coinsValue;
     private TextMeshProUGUI equipName;
-    private Image equipedAvatar;
+    private Image equippedAvatar;
 
     public GameObject availableCharacterPrefab;
     public GameObject ownedCharacterPrefab;
@@ -16,6 +18,7 @@ public class CoinLogic : MonoBehaviour
     public ScrollRect AvailablePanel;
     public Sprite[] availableSprites;
     public int[] availablePrices;
+    public int[] availableIndex;
 
     public ScrollRect OwnedPanel;
     public Sprite[] ownedSprites;
@@ -27,11 +30,12 @@ public class CoinLogic : MonoBehaviour
     void Start()
     {
         // Initialize some data
-        equipName = GameObject.Find("Equiped").GetComponent<TextMeshProUGUI>();
-        equipedAvatar = GameObject.Find("CurrentAvatar").GetComponent<Image>();
+        equipName = GameObject.Find("Equipped").GetComponent<TextMeshProUGUI>();
+        equippedAvatar = GameObject.Find("CurrentAvatar").GetComponent<Image>();
+        profile = ProfileData.Load();
 
         // Read the shop data
-        readShop();
+        ReadShopData();
         coinsValue = GameObject.Find("CoinsValue").GetComponent<TextMeshProUGUI>();
         coinsValue.text = shop.coins.ToString();
 
@@ -40,6 +44,10 @@ public class CoinLogic : MonoBehaviour
 
         // Instantiate the characters that are owned by the user
         CreateOwnedSlots();
+
+        // Read owned characters from ProfileData
+        UpdateShopCharacters();
+        UpdateEquippedCharacter();
     }
 
     // Update is called once per frame
@@ -48,16 +56,26 @@ public class CoinLogic : MonoBehaviour
         coinsValue.text = shop.coins.ToString();
     }
 
-    public void consumeCoins(int coins)
+    public bool consumeCoins(int value)
     {
-        shop.coins -= coins;
+        int coins = shop.coins;
+        coins -= value;
+
+        if (coins < 0)
+        {
+            return false;
+        } 
+        else
+        {
+            shop.coins = coins;
+            return true;
+        }
     }
 
-    void readShop()
+    void ReadShopData()
     {
-        TextAsset file = Resources.Load("Shop") as TextAsset;
-        string json = file.ToString();
-        shop = JsonConvert.DeserializeObject<Shop>(json);
+        shop = new Shop();
+        shop.coins = profile.GetCoins();
     }
 
     void CreateAvailableSlots()
@@ -83,6 +101,9 @@ public class CoinLogic : MonoBehaviour
 
             // Change character price
             slot.transform.Find("PriceValue").GetComponent<TextMeshProUGUI>().text = availablePrices[i].ToString();
+
+            // Store index value
+            slot.GetComponent<IndexValue>().index = availableIndex[i];
 
             // Change the next instantiation position
             availableYPos -= 150;
@@ -131,6 +152,10 @@ public class CoinLogic : MonoBehaviour
 
     public void BuyCharacter(GameObject availableCharacter)
     {
+        // Update ProfileData
+        profile.UpdateCoins(shop.coins);
+        profile.UnlockCharacter(availableCharacter.GetComponent<IndexValue>().index);
+
         shop.availableCharacters.Remove(availableCharacter);
 
         var newOwned = CreateOwnedSlot(new Vector3(0, ownedYPos, 0));
@@ -146,11 +171,15 @@ public class CoinLogic : MonoBehaviour
         spriteComponent.raycastTarget = true;
         spriteComponent.type = Image.Type.Simple;
 
+        newOwned.GetComponent<IndexValue>().index = availableCharacter.GetComponent<IndexValue>().index;
+
         shop.ownedCharacters.Add(newOwned);
 
         Destroy(availableCharacter);
 
-        //Getting back to the shop menu
+        FixPosition();
+
+        // Getting back to the shop menu
         var dialog = FindObjectOfType<BuyCheckDialog>();
         dialog.SwitchToShopMenu();
     }
@@ -159,15 +188,105 @@ public class CoinLogic : MonoBehaviour
     {
         equipName.text = ownedCharacter.transform.Find("Name").GetComponent<TextMeshProUGUI>().text;
 
-        // Copy info from the owned section to the Equiped Character area
-        equipedAvatar.sprite = ownedCharacter.transform.Find("Image").GetComponent<Image>().sprite;
-        equipedAvatar.preserveAspect = true;
-        equipedAvatar.useSpriteMesh = true;
-        equipedAvatar.raycastTarget = true;
-        equipedAvatar.type = Image.Type.Simple;
+        // Copy info from the owned section to the Equipped Character area
+        equippedAvatar.sprite = ownedCharacter.transform.Find("Image").GetComponent<Image>().sprite;
+        equippedAvatar.preserveAspect = true;
+        equippedAvatar.useSpriteMesh = true;
+        equippedAvatar.raycastTarget = true;
+        equippedAvatar.type = Image.Type.Simple;
 
-        //Getting back to the shop menu
+        // Update ProfileData
+        profile.UpdateCurrentCharacter(ownedCharacter.GetComponent<IndexValue>().index);
+
+        // Getting back to the shop menu
         var dialog = FindObjectOfType<EquipDialog>();
         dialog.SwitchToShopMenu();
+    }
+
+    private void FixAvailableCharactersPosition() 
+    {
+        int defaultYPos = -150;
+        foreach(GameObject character in shop.availableCharacters)
+        {
+            character.transform.SetParent(AvailablePanel.content.transform, false);
+            character.transform.localPosition = new Vector3(0, defaultYPos, 0);
+            defaultYPos -= 150;
+        }
+    }
+
+    private void FixPosition()
+    {
+        int defaultYPos = -150;
+        foreach(GameObject character in shop.availableCharacters)
+        {
+            character.transform.SetParent(AvailablePanel.content.transform, false);
+            character.transform.localPosition = new Vector3(250, defaultYPos, 0);
+            defaultYPos -= 150;
+        }
+    }
+
+    private GameObject GetCharacterByIndex(List<GameObject> characters, int idx)
+    {
+        foreach (GameObject character in characters)
+        {
+            if (character.GetComponent<IndexValue>().index == idx)
+            {
+                return character;
+            }
+        }
+        return null;
+    }
+
+    private void UpdateShopCharacters()
+    {
+        bool[] owned = profile.GetCharacters();
+        for (int i = 0; i < owned.Length; i++)
+        {
+            if (owned[i])
+            {
+                GameObject availableCharacter = GetCharacterByIndex(shop.availableCharacters, i);
+
+                shop.availableCharacters.Remove(availableCharacter);
+
+                var newOwned = CreateOwnedSlot(new Vector3(0, ownedYPos, 0));
+                ownedYPos -= 150;
+
+                newOwned.transform.Find("Name").GetComponent<TextMeshProUGUI>().text = availableCharacter.transform.Find("Name").GetComponent<TextMeshProUGUI>().text;
+                newOwned.transform.Find("Image").GetComponent<Image>().sprite = availableCharacter.transform.Find("Image").GetComponent<Image>().sprite;
+
+                var spriteComponent = newOwned.transform.Find("Image").GetComponent<Image>();
+
+                spriteComponent.preserveAspect = true;
+                spriteComponent.useSpriteMesh = true;
+                spriteComponent.raycastTarget = true;
+                spriteComponent.type = Image.Type.Simple;
+
+                newOwned.GetComponent<IndexValue>().index = availableCharacter.GetComponent<IndexValue>().index;
+
+                shop.ownedCharacters.Add(newOwned);
+
+                Destroy(availableCharacter);
+            }
+        }
+
+        FixAvailableCharactersPosition();
+    }
+
+    private void UpdateEquippedCharacter()
+    {
+        int equipped = profile.GetCurrentCharacter();
+        GameObject equippedCharacter = GetCharacterByIndex(shop.ownedCharacters, equipped);
+
+        if (equippedCharacter != null)
+        {
+            equipName.text = equippedCharacter.transform.Find("Name").GetComponent<TextMeshProUGUI>().text;
+
+            // Copy info from the equipped character to the Equipped Character area
+            equippedAvatar.sprite = equippedCharacter.transform.Find("Image").GetComponent<Image>().sprite;
+            equippedAvatar.preserveAspect = true;
+            equippedAvatar.useSpriteMesh = true;
+            equippedAvatar.raycastTarget = true;
+            equippedAvatar.type = Image.Type.Simple;
+        }
     }
 }

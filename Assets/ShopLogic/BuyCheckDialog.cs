@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class BuyCheckDialog : MonoBehaviour
 {
@@ -39,6 +40,15 @@ public class BuyCheckDialog : MonoBehaviour
     public void YesBuy()
     {
         var mainLogic = FindObjectOfType<CoinLogic>();
-        mainLogic.BuyCharacter(selectedSlot);
+        var price = int.Parse(selectedSlot.transform.Find("PriceValue").GetComponent<TextMeshProUGUI>().text);
+
+        if (mainLogic.consumeCoins(price))
+        {
+            mainLogic.BuyCharacter(selectedSlot);
+        } 
+        else
+        {
+            SwitchToShopMenu();
+        }
     }
 }

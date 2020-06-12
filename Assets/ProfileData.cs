@@ -9,10 +9,12 @@ public class ProfileData
     private bool[] character;
     private int coins;
     private float volume;
+    private int currentCharacter;
 
     private ProfileData() {
         difficulty = new bool[] { true, false, false, false, false };
         character = new bool[] { true, false, false, false, false };
+        currentCharacter = 0;
         coins = 0;
         volume = 0.5f;
     }
@@ -42,6 +44,14 @@ public class ProfileData
         }
     }
 
+    public void UpdateCurrentCharacter(int value) {
+        if (value >= 0 && value < 5)
+        {
+            currentCharacter = value;
+            SaveSystem.Save(this);
+        }
+    }
+
     public void UpdateCoins(int value) {
         if (value >= 0)
         {
@@ -65,6 +75,10 @@ public class ProfileData
 
     public bool[] GetCharacters() {
         return character;
+    }
+
+    public int GetCurrentCharacter() {
+        return currentCharacter;
     }
 
     public int GetCoins() {

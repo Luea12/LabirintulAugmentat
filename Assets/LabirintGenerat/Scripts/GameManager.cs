@@ -56,6 +56,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         GameEvents.current.OnCoinPickup += OnCoinPickup;
+        GameEvents.current.OnGameWin += OnGameWin;
         BeginGame();
     }
 
@@ -108,5 +109,10 @@ public class GameManager : MonoBehaviour
         {
 			mazeInstance.GenerateEndPoint();
         }
+    }
+
+    private void OnGameWin()
+    {
+        print("win");
     }
 }

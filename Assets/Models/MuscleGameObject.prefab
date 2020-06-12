@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2631384183633868465}
   m_Layer: 0
-  m_Name: Muscle
+  m_Name: MuscleGameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27,7 +27,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 3548053486867528164}
+  - {fileID: 3548053486867653421}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -88,7 +88,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 32a5a0363d4370e43bc7c0c5716adf73, type: 3}
---- !u!4 &3548053486867528164 stripped
+--- !u!4 &3548053486867653421 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400004, guid: 32a5a0363d4370e43bc7c0c5716adf73,
     type: 3}

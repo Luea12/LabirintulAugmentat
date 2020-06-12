@@ -2,20 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameModeAndLevelSelection : MonoBehaviour
 {
+    private ProfileData profile;
+    public GameObject gameModeMenu;
+    public GameObject levelMenu;
 
-    private GameObject gameModeMenu;
-    private GameObject levelMenu;
-
+    public Button[] difficultyButtons;
 
     // Start is called before the first frame update
     void Start()
     {
-        gameModeMenu = GameObject.Find("GameModeMenu");
-        levelMenu = GameObject.Find("LevelMenu");
+        profile = ProfileData.Load();
         SwitchToGameModeMenu();
+        UpdateDifficultyButtons();
     }
 
     // Update is called once per frame
@@ -33,12 +35,26 @@ public class GameModeAndLevelSelection : MonoBehaviour
         }
     }
 
-    public void SwitchToGameModeMenu() {
+    public void UpdateDifficultyButtons() 
+    {
+        bool[] unlocked = profile.GetDifficulties();
+        for (int i = 0; i < unlocked.Length; i++) 
+        {
+            if (!unlocked[i])
+            {
+                difficultyButtons[i].interactable = false;
+            }
+        }
+    }
+
+    public void SwitchToGameModeMenu() 
+    {
         gameModeMenu.SetActive(true);
         levelMenu.SetActive(false);
     }
 
-    public void SwitchToLevelMenu() {
+    public void SwitchToLevelMenu() 
+    {
         gameModeMenu.SetActive(false);
         levelMenu.SetActive(true);
     }

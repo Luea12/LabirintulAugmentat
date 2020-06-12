@@ -7,6 +7,9 @@ public class CoinLogic : MonoBehaviour
 {
     private Shop shop;
     private TextMeshProUGUI coinsValue;
+    private TextMeshProUGUI equipName;
+    private Image equipedAvatar;
+
     public GameObject availableCharacterPrefab;
     public GameObject ownedCharacterPrefab;
     
@@ -23,6 +26,10 @@ public class CoinLogic : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // Initialize some data
+        equipName = GameObject.Find("Equiped").GetComponent<TextMeshProUGUI>();
+        equipedAvatar = GameObject.Find("CurrentAvatar").GetComponent<Image>();
+
         // Read the shop data
         readShop();
         coinsValue = GameObject.Find("CoinsValue").GetComponent<TextMeshProUGUI>();
@@ -124,9 +131,6 @@ public class CoinLogic : MonoBehaviour
 
     public void BuyCharacter(GameObject availableCharacter)
     {
-
-        //var availableCharacter = UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject;
-
         shop.availableCharacters.Remove(availableCharacter);
 
         var newOwned = CreateOwnedSlot(new Vector3(0, ownedYPos, 0));
@@ -148,6 +152,22 @@ public class CoinLogic : MonoBehaviour
 
         //Getting back to the shop menu
         var dialog = FindObjectOfType<BuyCheckDialog>();
+        dialog.SwitchToShopMenu();
+    }
+
+    public void EquipCharacter(GameObject ownedCharacter)
+    {
+        equipName.text = ownedCharacter.transform.Find("Name").GetComponent<TextMeshProUGUI>().text;
+
+        // Copy info from the owned section to the Equiped Character area
+        equipedAvatar.sprite = ownedCharacter.transform.Find("Image").GetComponent<Image>().sprite;
+        equipedAvatar.preserveAspect = true;
+        equipedAvatar.useSpriteMesh = true;
+        equipedAvatar.raycastTarget = true;
+        equipedAvatar.type = Image.Type.Simple;
+
+        //Getting back to the shop menu
+        var dialog = FindObjectOfType<EquipDialog>();
         dialog.SwitchToShopMenu();
     }
 }

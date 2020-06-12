@@ -22,4 +22,7 @@ public class Difficulty
 
     [Tooltip("Number of levels needed to win")]
     public ushort numberOfLevels;
+
+    [Tooltip("Number of seconds if timed level")]
+    public ushort numberOfSeconds;
 }

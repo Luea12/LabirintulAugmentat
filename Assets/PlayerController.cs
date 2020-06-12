@@ -126,6 +126,7 @@ public class PlayerController : MonoBehaviour
 
             if(GameManager.instance.currentLevel <= GameManager.instance.currentDifficulty.numberOfLevels)
             {
+                GameEvents.current.LevelUp();
                 GameManager.instance.RestartGame();
             }
             else

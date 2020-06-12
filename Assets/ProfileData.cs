@@ -18,8 +18,11 @@ public class ProfileData
     }
 
     public static ProfileData Default() {
-        ProfileData data = new ProfileData();
-        return data;
+        return new ProfileData();
+    }
+
+    public static ProfileData Load() {
+        return SaveSystem.Load();
     }
 
     // Setters

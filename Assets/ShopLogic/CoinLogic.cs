@@ -132,10 +132,15 @@ public class CoinLogic : MonoBehaviour
         var newOwned = CreateOwnedSlot(new Vector3(0, ownedYPos, 0));
         ownedYPos -= 150;
 
-        /**
-         * TODO: Copy values from available character over to the newly owned character
-         * and persist everything to storage
-         */
+        newOwned.transform.Find("Name").GetComponent<TextMeshProUGUI>().text = availableCharacter.transform.Find("Name").GetComponent<TextMeshProUGUI>().text;
+        newOwned.transform.Find("Image").GetComponent<Image>().sprite = availableCharacter.transform.Find("Image").GetComponent<Image>().sprite;
+
+        var spriteComponent = newOwned.transform.Find("Image").GetComponent<Image>();
+
+        spriteComponent.preserveAspect = true;
+        spriteComponent.useSpriteMesh = true;
+        spriteComponent.raycastTarget = true;
+        spriteComponent.type = Image.Type.Simple;
 
         shop.ownedCharacters.Add(newOwned);
 

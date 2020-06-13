@@ -26,18 +26,15 @@ public class GlobalControl : MonoBehaviour
 
     public void Awake()
     {
-<<<<<<< HEAD
+
         if(instance != null)
         {
-            Destroy(this);
+            Destroy(this.gameObject);
         }
-            instance = this;    
-=======
-        if (instance == null) {
-            DontDestroyOnLoad(this);
-        }
+
         instance = this;    
->>>>>>> 4031eff40dd776ed58ef0233df57dba242cf3b9e
+        DontDestroyOnLoad(this);
+
     }
 
     void Start()

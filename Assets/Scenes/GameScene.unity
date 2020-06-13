@@ -1052,9 +1052,18 @@ MonoBehaviour:
     levelUpSize: 2
     numberOfLevels: 0
     numberOfSeconds: 0
+  currentDifficultyIdx: 0
+  selectedGamemode: 0
   currentNumberOfCoins: 0
   currentLevel: 0
-  tempModel: {fileID: 100004, guid: 32a5a0363d4370e43bc7c0c5716adf73, type: 3}
+  tempModel: {fileID: 7211516514332530838, guid: f7f6fc7b44133be4eb4ba5436e67640f,
+    type: 3}
+  modelArray:
+  - {fileID: 268222530785928392, guid: aae15d3ed0c170543b37f056b341de49, type: 3}
+  - {fileID: 3012784446267075709, guid: 1a6c32394496c3d44bfb25abf05dc09b, type: 3}
+  - {fileID: 5657614347799855457, guid: a45181a27b1199c40b93d9a920705a33, type: 3}
+  - {fileID: 7211516514332530838, guid: f7f6fc7b44133be4eb4ba5436e67640f, type: 3}
+  - {fileID: 7664687765233743518, guid: cbad539d78ee19b409cfdd5f46066e21, type: 3}
 --- !u!4 &324596684
 Transform:
   m_ObjectHideFlags: 0

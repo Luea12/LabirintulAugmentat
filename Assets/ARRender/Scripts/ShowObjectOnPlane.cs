@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
+using TMPro;
 
 [RequireComponent(typeof(ARRaycastManager))]
 public class ShowObjectOnPlane : MonoBehaviour
@@ -14,6 +15,9 @@ public class ShowObjectOnPlane : MonoBehaviour
     public string PlaceableObjectName;
 
     static List<ARRaycastHit> s_Hits = new List<ARRaycastHit>();
+
+    [SerializeField]
+    private TextMeshProUGUI toggleButtonText;
 
     private void Awake()
     {
@@ -36,7 +40,7 @@ public class ShowObjectOnPlane : MonoBehaviour
 
     private void Update()
     {
-        if(!TryGetTouchPosition(out Vector2 touchPosition))
+        if(!TryGetTouchPosition(out Vector2 touchPosition) || toggleButtonText.text == "Enable")
         {
             return;
         }

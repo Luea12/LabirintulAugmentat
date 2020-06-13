@@ -26,12 +26,14 @@ public class GlobalControl : MonoBehaviour
 
     public void Awake()
     {
-            instance = this;    
+        if (instance == null) {
+            DontDestroyOnLoad(this);
+        }
+        instance = this;    
     }
 
     void Start()
     {
         selectedDifficultyIdx = 0;
-        DontDestroyOnLoad(this);
     }
 }

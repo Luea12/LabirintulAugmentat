@@ -21,7 +21,9 @@ public class TimerScript : MonoBehaviour
 
     void Start()
     {
+
     }
+    
     void GetLevelTime()
     {
         numberOfSeconds = GameManager.instance.currentDifficulty.numberOfSeconds;

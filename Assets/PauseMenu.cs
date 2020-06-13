@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using TMPro;
 
 public class PauseMenu : MonoBehaviour
 {
@@ -93,6 +94,7 @@ public class PauseMenu : MonoBehaviour
     }
 
     public void LoadMenu() {
+        AudioManager.instance.UpdatePitch(2f);
         CanPause = true;
         Time.timeScale = 1f;
         SceneManager.LoadSceneAsync("start");

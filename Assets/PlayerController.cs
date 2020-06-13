@@ -136,7 +136,7 @@ public class PlayerController : MonoBehaviour
 
             if(GameManager.instance.currentLevel <= GameManager.instance.currentDifficulty.numberOfLevels)
             {
-                profile.UpdateCoins(GameManager.instance.currentNumberOfCoins);
+                profile.UpdateCoins(profile.GetCoins() + GameManager.instance.currentNumberOfCoins);
                 GameEvents.current.LevelUp();
                 GameManager.instance.RestartGame();
             }

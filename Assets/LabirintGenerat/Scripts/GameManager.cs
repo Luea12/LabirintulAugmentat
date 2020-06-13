@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.Events;
+using TMPro;
 public class GameManager : MonoBehaviour
 {
     // Singleton
@@ -54,6 +55,8 @@ public class GameManager : MonoBehaviour
 
     private ProfileData profile;
 
+    public TextMeshProUGUI coinsValue;
+
     public void Awake()
     {
         instance = this;
@@ -80,6 +83,8 @@ public class GameManager : MonoBehaviour
 
     private void BeginGame()
     {
+        coinsValue.text = currentNumberOfCoins.ToString();
+
         mazeInstance = Instantiate(mazePrefab) as Maze;
         mazeInstance.transform.parent = gameArea;
         mazeInstance.transform.localPosition = new Vector3(0, 0, 0);
@@ -118,6 +123,7 @@ public class GameManager : MonoBehaviour
     {
         AudioManager.instance.Play("CoinPickup");
         currentNumberOfCoins += 1;
+        coinsValue.text = currentNumberOfCoins.ToString();
         if (currentNumberOfCoins == currentDifficulty.treshold)
         {
 			mazeInstance.GenerateEndPoint();

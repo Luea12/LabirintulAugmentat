@@ -41,7 +41,7 @@ public class AudioManager : MonoBehaviour
         Play("BGM");
     }
 
-    public void Play (string name)
+    public void Play(string name)
     {
         Sound s = Array.Find(sounds, sounds => sounds.name == name);
         if(s != null)
@@ -50,9 +50,25 @@ public class AudioManager : MonoBehaviour
         }
     }
 
+    public void UpdatePitch(float scale)
+    {
+        foreach(Sound s in sounds)
+        {
+            s.source.pitch *= scale;
+        }
+    }
+
+    public void UpdateVolume(float value)
+    {
+        foreach(Sound s in sounds)
+        {
+            s.source.volume = value;
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {
-        // AudioManager.instance.Play("soundName");
+
     }
 }

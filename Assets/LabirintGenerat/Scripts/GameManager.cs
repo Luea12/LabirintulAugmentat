@@ -97,7 +97,7 @@ public class GameManager : MonoBehaviour
 
     public void RestartGame()
     {
-		currentNumberOfCoins = profile.GetCoins();
+        currentNumberOfCoins = 0;
         StopAllCoroutines();
         Destroy(mazeInstance.gameObject);
 		Destroy(playerInstance.gameObject);

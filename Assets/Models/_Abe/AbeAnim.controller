@@ -6,7 +6,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Gris
+  m_Name: AbeAnim
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: Running
@@ -200,7 +200,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 3c27c2930540b0d4f9abd24b1ac608d2, type: 3}
+  m_Motion: {fileID: 7400000, guid: acce34a3cb1fcac4caaf710e71f2ff9b, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -228,7 +228,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 2a8c801c5e5d563479151b4cbfad601f, type: 3}
+  m_Motion: {fileID: 7400000, guid: ad456e69110501f428b1bae96dd85f9f, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -254,7 +254,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: a5b64f36b8e9df945890367ada418fd5, type: 3}
+  m_Motion: {fileID: 7400000, guid: 0783cdab7b91fee4db11a4af6d4c35eb, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 

@@ -34,4 +34,8 @@ public class OptionsController : MonoBehaviour
         SceneManager.LoadSceneAsync("start");
     }
 
+    public void UpdateAudioVolume(Slider slider) {
+        AudioManager.instance.UpdateVolume(slider.value);
+    }
+
 }

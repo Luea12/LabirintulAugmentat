@@ -44,6 +44,7 @@ public class PauseMenu : MonoBehaviour
     }
 
     public void Resume() {
+        AudioManager.instance.UpdatePitch(2f);
         gameUI.SetActive(true);
         pauseMenu.SetActive(false);
         Time.timeScale = 1f;
@@ -52,6 +53,7 @@ public class PauseMenu : MonoBehaviour
     }
 
     void Pause() {
+        AudioManager.instance.UpdatePitch(.5f);
         gameUI.SetActive(false);
         pauseMenu.SetActive(true);
         Time.timeScale = 0f;
@@ -62,6 +64,7 @@ public class PauseMenu : MonoBehaviour
 
     void ShowWinScreen()
     {
+        AudioManager.instance.Play("GameWin");
         gameUI.SetActive(false);
         pauseMenu.SetActive(false);
         winScreen.SetActive(true);
@@ -73,6 +76,7 @@ public class PauseMenu : MonoBehaviour
 
     void ShowLostScreen()
     {
+        AudioManager.instance.Play("GameOver");
         gameUI.SetActive(false);
         pauseMenu.SetActive(false);
         lostScreen.SetActive(true);

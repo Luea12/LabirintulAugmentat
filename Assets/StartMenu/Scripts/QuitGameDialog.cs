@@ -5,12 +5,14 @@ using UnityEngine.UI;
 
 public class QuitGameDialog : MonoBehaviour
 {
-    private GameObject exitMenu;
-    private GameObject startMenu;
+    public GameObject exitMenu;
+    public GameObject startMenu;
+
+    private ProfileData profile;
 
     void Start () {
-        exitMenu = GameObject.Find("ExitMenu");
-        startMenu = GameObject.Find("StartMenu");
+        profile = ProfileData.Load();
+        AudioManager.instance.UpdateVolume(profile.GetVolume());
         SwitchToStartMenu();
     }
 

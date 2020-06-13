@@ -116,6 +116,7 @@ public class GameManager : MonoBehaviour
 
     private void OnCoinPickup()
     {
+        AudioManager.instance.Play("CoinPickup");
         currentNumberOfCoins += 1;
         if (currentNumberOfCoins == currentDifficulty.treshold)
         {

@@ -14,6 +14,8 @@ public class PlayerController : MonoBehaviour
     private Vector3 destPosition;
     private bool isMoving = false;
 
+    private ProfileData profile;
+
     public void SetLocation(MazeCell cell)
     {
         currentCell = cell;
@@ -73,6 +75,7 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
+        profile = ProfileData.Load();
     }
 
     public void SetPlayerModel(GameObject model)
@@ -126,11 +129,13 @@ public class PlayerController : MonoBehaviour
 
             if(GameManager.instance.currentLevel <= GameManager.instance.currentDifficulty.numberOfLevels)
             {
+                profile.UpdateCoins(GameManager.instance.currentNumberOfCoins);
                 GameEvents.current.LevelUp();
                 GameManager.instance.RestartGame();
             }
             else
             {
+                profile.UpdateCoins(GameManager.instance.currentNumberOfCoins);
                 GameEvents.current.GameWin();
             }
         }

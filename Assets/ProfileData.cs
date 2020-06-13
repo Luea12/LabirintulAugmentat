@@ -15,7 +15,7 @@ public class ProfileData
         difficulty = new bool[] { true, false, false, false, false };
         character = new bool[] { true, false, false, false, false };
         currentCharacter = 0;
-        coins = 500;
+        coins = 0;
         volume = 0.5f;
     }
 

@@ -50,6 +50,8 @@ public class GameManager : MonoBehaviour
 
     public GameObject tempModel;
 
+    public GameObject[] modelArray;
+
     private ProfileData profile;
 
     public void Awake()
@@ -63,7 +65,6 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         profile = ProfileData.Load();
-        currentNumberOfCoins = profile.GetCoins();
         GameEvents.current.OnCoinPickup += OnCoinPickup;
         GameEvents.current.OnGameWin += OnGameWin;
         BeginGame();
@@ -106,7 +107,7 @@ public class GameManager : MonoBehaviour
     private void InstantiatePlayer()
     {
         playerInstance = Instantiate(playerPrefab);
-        playerInstance.SetPlayerModel(tempModel);
+        playerInstance.SetPlayerModel(modelArray[profile.GetCurrentCharacter()]);
         MazeCell randomPlayerCell = mazeInstance.GetRandomCell();
 		playerInstance.transform.parent = gameArea;
         playerInstance.SetLocation(randomPlayerCell);
@@ -125,6 +126,7 @@ public class GameManager : MonoBehaviour
 
     private void OnGameWin()
     {
+        profile.UpdateCoins(profile.GetCoins() + currentNumberOfCoins);
         profile.UnlockDifficulty(currentDifficultyIdx + 1);
     }
 }

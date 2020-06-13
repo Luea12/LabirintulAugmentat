@@ -14,6 +14,8 @@ public class PlayerController : MonoBehaviour
     private Vector3 destPosition;
     private bool isMoving = false;
 
+    private Animator anim;
+
     private ProfileData profile;
 
     public void SetLocation(MazeCell cell)
@@ -49,6 +51,9 @@ public class PlayerController : MonoBehaviour
     {
         isMoving = true;
 
+
+        anim.SetBool("Running", true);
+
         Look(direction);
 
         MazeCellEdge edge = currentCell.GetEdge(direction);
@@ -75,6 +80,7 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
+        anim = GetComponentInChildren<Animator>();
         profile = ProfileData.Load();
     }
 
@@ -82,7 +88,7 @@ public class PlayerController : MonoBehaviour
     {
         GameObject instance = Instantiate(model);
         instance.transform.SetParent(this.transform);
-        instance.transform.position = new Vector3(0,0.5f,0);
+        // instance.transform.position = new Vector3(0,0.5f,0);
     }
 
     private void FixedUpdate()
@@ -108,8 +114,10 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            transform.position = Vector3.MoveTowards(transform.position, destPosition, 1f* Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, destPosition, 0.1f*Time.deltaTime);
             isMoving = !(transform.position == destPosition);
+            anim.SetBool("Running", isMoving);
+
         }
     }
 
@@ -119,7 +127,6 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.tag == "Coin")
         {
             Destroy(other.gameObject);
-            //GameManager.CoinPickup.Invoke();
             GameEvents.current.CoinPickup();
         }
 
@@ -135,9 +142,23 @@ public class PlayerController : MonoBehaviour
             }
             else
             {
-                profile.UpdateCoins(GameManager.instance.currentNumberOfCoins);
-                GameEvents.current.GameWin();
+                anim.SetBool("Win", true);
+                Destroy(other.gameObject);
+                StartCoroutine("OnCompleteAttackAnimation");
             }
         }
+    }
+
+
+    IEnumerator OnCompleteAttackAnimation()
+    {
+        while (anim.GetCurrentAnimatorStateInfo(0).normalizedTime < 1.0f){
+            print(anim.GetCurrentAnimatorStateInfo(0).normalizedTime);
+            yield return null;
+
+        }
+
+        GameEvents.current.GameWin();
+        anim.SetBool("Win", false);
     }
 }

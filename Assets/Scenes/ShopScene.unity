@@ -2464,12 +2464,12 @@ MonoBehaviour:
     type: 3}
   AvailablePanel: {fileID: 1892593075}
   availableSprites:
-  - {fileID: 21300000, guid: ae6c2a027c9ca7196b26be8e732e8620, type: 3}
-  - {fileID: 21300000, guid: ae6c2a027c9ca7196b26be8e732e8620, type: 3}
-  - {fileID: 21300000, guid: ae6c2a027c9ca7196b26be8e732e8620, type: 3}
-  - {fileID: 21300000, guid: ae6c2a027c9ca7196b26be8e732e8620, type: 3}
-  - {fileID: 21300000, guid: ae6c2a027c9ca7196b26be8e732e8620, type: 3}
-  availablePrices: 000000000f0000002d00000041010000f4010000
+  - {fileID: 21300000, guid: 76c803c2b26ea0647a4297372f3cc1c5, type: 3}
+  - {fileID: 21300000, guid: 3b2ac986a73548547a43f4810dfa12a3, type: 3}
+  - {fileID: 21300000, guid: 5b39ccaa4912cc14f8737452f16ba441, type: 3}
+  - {fileID: 21300000, guid: bae9bdd10ad4c8a41864626f32d74568, type: 3}
+  - {fileID: 21300000, guid: 0cb4e94dc6580204492ed4a810b5bef9, type: 3}
+  availablePrices: 00000000140000003200000064000000f4010000
   availableIndex: 0000000001000000020000000300000004000000
   OwnedPanel: {fileID: 360877157}
   ownedSprites: []
@@ -2701,7 +2701,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1207874565}
   m_HandleRect: {fileID: 1207874564}
   m_Direction: 2
-  m_Value: 0.9999999
+  m_Value: 1
   m_Size: 0.533924
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -3468,7 +3468,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 59.1
+  m_fontSize: 60.3
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -4033,7 +4033,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1116025928}
   m_HandleRect: {fileID: 1116025927}
   m_Direction: 2
-  m_Value: 0.9999999
+  m_Value: 1
   m_Size: 0.533924
   m_NumberOfSteps: 0
   m_OnValueChanged:

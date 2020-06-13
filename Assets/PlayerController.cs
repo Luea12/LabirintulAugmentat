@@ -16,6 +16,8 @@ public class PlayerController : MonoBehaviour
 
     private Animator anim;
 
+    private ProfileData profile;
+
     public void SetLocation(MazeCell cell)
     {
         currentCell = cell;
@@ -79,6 +81,7 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         anim = GetComponentInChildren<Animator>();
+        profile = ProfileData.Load();
     }
 
     public void SetPlayerModel(GameObject model)
@@ -133,6 +136,7 @@ public class PlayerController : MonoBehaviour
 
             if(GameManager.instance.currentLevel <= GameManager.instance.currentDifficulty.numberOfLevels)
             {
+                profile.UpdateCoins(GameManager.instance.currentNumberOfCoins);
                 GameEvents.current.LevelUp();
                 GameManager.instance.RestartGame();
             }
@@ -148,7 +152,6 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator OnCompleteAttackAnimation()
     {
-        print("enter3");
         while (anim.GetCurrentAnimatorStateInfo(0).normalizedTime < 1.0f){
             print(anim.GetCurrentAnimatorStateInfo(0).normalizedTime);
             yield return null;
